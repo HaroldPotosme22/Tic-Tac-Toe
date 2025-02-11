@@ -1,3 +1,4 @@
+.titulo{color: red;font-family: 'Times New Roman', Times, serif;display: flex;align-items: center;}
 .tic{border-width:60px ;border-color:black ;
 background-color:white;}
 .tic{display: grid;grid-column:repeat}
