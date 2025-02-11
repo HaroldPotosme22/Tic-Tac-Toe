@@ -1,0 +1,3 @@
+.tic{border-width:60px ;border-color:black ;
+background-color:white;}
+.tic{display: grid;grid-column:repeat}
