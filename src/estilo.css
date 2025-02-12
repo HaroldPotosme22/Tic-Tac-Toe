@@ -1,4 +1,9 @@
-.titulo{color: red;font-family: 'Times New Roman', Times, serif;display: flex;align-items: center;}
-.tic{border-width:60px ;border-color:black ;
-background-color:white;}
-.tic{display: grid;grid-column:repeat}
+.body{font-family: Arial, Helvetica, sans-serif;
+text-align: center;padding: 50px;}
+.gato{display: grid;grid-template-columns: repeat(3,100px);
+gap: 5px;justify-content: center;margin:20px auto;}
+.celda{width:100px;height: 100px;border:2px solid #000;font-size: 2rem;display: flex;align-items: center;
+justify-content: center;cursor: pointer;}
+.Titulo{color:red;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size: x-large;position: relative;left:600px ;}
+.html{background-image:url(descarga\ \(2\).jpg);image-resolution: auto
+    ;}
