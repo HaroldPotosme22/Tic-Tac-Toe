@@ -1,0 +1,28 @@
+<body class="cuerpo">
+    <h1 class="titulo">Gato cat miau miuau</h1>
+    <div class="gato">
+        <div class="celda" id="0"></div>
+        <div class="celda" id="1"></div>
+        <div class="celda" id="2"></div>
+        <div class="celda" id="3"></div>
+        <div class="celda" id="4"></div>
+        <div class="celda" id="5"></div>
+        <div class="celda" id="6"></div>
+        <div class="celda" id="7"></div>
+        <div class="celda" id="8"></div>
+   
+
+  
+</div>
+<button class="reinicio" id="reinicio">reiniciar</button>
+<script src="codigo.js "></script>
+//////7
+.cuerpo{font-family: Arial, Helvetica, sans-serif;
+    text-align: center;padding: 50px;}
+    .gato{display: grid;grid-template-columns: repeat(3,100px);
+    gap: 5px;justify-content: center;margin:20px auto;}
+    .celda{width:100px;height: 100px;border:2px solid #000;font-size: 2rem;display: flex;align-items: center;
+    justify-content: center;cursor: pointer;}
+    .titulo{color:red;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size: x-large;position: relative;left:10px;}
+    .titulo{border:rgb(255, 251, 0);border-style: solid;}
+    .cuerpo{background-image:url(wallpaper_forza_horizon_01_1920x1080.jpg);background-size:cover;background-repeat: no-repeat ;}
