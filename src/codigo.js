@@ -1,6 +1,6 @@
 let currentPlayer = 'X'; 
 let machinePlayer = 'O';  
-let board = ['', '', '', '', '', '', '', '', ''];  
+let tablero = ['', '', '', '', '', '', '', '', ''];  
 let gameActive = true;  
 
 const cells = document.querySelectorAll('.cell');
@@ -12,18 +12,18 @@ function handleCellClick(event) {
   const index = Array.from(cells).indexOf(event.target);
 
   
-  if (board[index] !== '' || !gameActive || currentPlayer === machinePlayer) {
+  if (tablero[index] !== '' || !gameActive || currentPlayer === machinePlayer) {
     return;
   }
 
   
-  board[index] = currentPlayer;
+  tablero[index] = currentPlayer;
   event.target.textContent = currentPlayer;
 
   if (checkWinner()) {
     message.textContent = '¡Has ganado!';
     gameActive = false;
-  } else if (board.every(cell => cell !== '')) {
+  } else if (tablero.every(cell => cell !== '')) {
     message.textContent = '¡Es un empate!';
     gameActive = false;
   } else {
@@ -34,14 +34,14 @@ function handleCellClick(event) {
 //verifico elementos
 
 function machineMove() {
-  const bestMove = minimax(board, machinePlayer);
-  board[bestMove.index] = machinePlayer;
+  const bestMove = minimax(tablero, machinePlayer);
+  tablero[bestMove.index] = machinePlayer;
   cells[bestMove.index].textContent = machinePlayer;
 
   if (checkWinner()) {
     message.textContent = 'La máquina ha ganado!';
     gameActive = false;
-  } else if (board.every(cell => cell !== '')) {
+  } else if (tablero.every(cell => cell !== '')) {
     message.textContent = '¡Es un empate!';
     gameActive = false;
   } else {
@@ -50,20 +50,20 @@ function machineMove() {
 }
 //machinemove para mover la maquina
 
-function minimax(board, player) {
-  const availableMoves = getAvailableMoves(board);
+function minimax(tablero, player) {
+  const availableMoves = getAvailableMoves(tablero);
   
-  if (checkWinnerForPlayer(board, 'X')) return { score: -10 };
-  if (checkWinnerForPlayer(board, 'O')) return { score: 10 };
+  if (checkWinnerForPlayer(tablero, 'X')) return { score: -10 };
+  if (checkWinnerForPlayer(tablero, 'O')) return { score: 10 };
   if (availableMoves.length === 0) return { score: 0 };
 
   const moves = [];
   
   for (const move of availableMoves) {
-    const newBoard = board.slice();
-    newBoard[move] = player;
+    const nuevoTablero = tablero.slice();
+    nuevoTablero[move] = tablero;
 
-    const result = minimax(newBoard, player === 'O' ? 'X' : 'O');
+    const result = minimax(nuevoTablero, player === 'O' ? 'X' : 'O');
     moves.push({ index: move, score: result.score });
   }
 
@@ -79,22 +79,22 @@ function minimax(board, player) {
 }
 
 //algoritmo para que la maquina gane
-function getAvailableMoves(board) {
-  return board.map((cell, index) => cell === '' ? index : null).filter(index => index !== null);
+function getAvailableMoves(tablero) {
+  return tablero.map((cell, index) => cell === '' ? index : null).filter(index => index !== null);
 }
 
 
 function checkWinner() {
-  if (checkWinnerForPlayer(board, 'X')) {
+  if (checkWinnerForPlayer(tablero, 'X')) {
     return true;
-  } else if (checkWinnerForPlayer(board, 'O')) {
+  } else if (checkWinnerForPlayer(tablero, 'O')) {
     return true;
   }
   return false;
 }
 
 
-function checkWinnerForPlayer(board, player) {
+function checkWinnerForPlayer(tablero, player) {
   const winningCombinations = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
     [0, 3, 6], [1, 4, 7], [2, 5, 8], 
@@ -103,18 +103,19 @@ function checkWinnerForPlayer(board, player) {
 
   return winningCombinations.some(combination => {
     const [a, b, c] = combination;
-    return board[a] === player && board[a] === board[b] && board[a] === board[c];
+    return tablero[a] === player && tablero[a] === tablero[b] && tablero[a] === tablero[c];
   });
 }
 //verifica si gana
 function resetGame() {
-  board = ['', '', '', '', '', '', '', '', ''];
+  tablero = ['', '', '', '', '', '', '', '', ''];
   gameActive = true;
   currentPlayer = 'X';
   message.textContent = '';
   cells.forEach(cell => {
     cell.textContent = ''; 
   });
+  
 }
 //reset game para resetear el juego
 
@@ -123,3 +124,5 @@ cells.forEach(cell => {
 });
 
 resetButton.addEventListener('click', resetGame);
+
+
