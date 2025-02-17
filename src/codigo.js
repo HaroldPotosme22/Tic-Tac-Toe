@@ -6,7 +6,7 @@ let gameActive = true;
 const cells = document.querySelectorAll('.cell');
 const resetButton = document.getElementById('reset');
 const message = document.getElementById('mensaje');
-
+//llamo elementos
 
 function handleCellClick(event) {
   const index = Array.from(cells).indexOf(event.target);
@@ -31,7 +31,7 @@ function handleCellClick(event) {
     machineMove();  
   }
 }
-
+//verifico elementos
 
 function machineMove() {
   const bestMove = minimax(board, machinePlayer);
@@ -48,7 +48,7 @@ function machineMove() {
     currentPlayer = 'X';  
   }
 }
-
+//machinemove para mover la maquina
 
 function minimax(board, player) {
   const availableMoves = getAvailableMoves(board);
@@ -78,7 +78,7 @@ function minimax(board, player) {
   }
 }
 
-
+//algoritmo para que la maquina gane
 function getAvailableMoves(board) {
   return board.map((cell, index) => cell === '' ? index : null).filter(index => index !== null);
 }
@@ -106,7 +106,7 @@ function checkWinnerForPlayer(board, player) {
     return board[a] === player && board[a] === board[b] && board[a] === board[c];
   });
 }
-
+//verifica si gana
 function resetGame() {
   board = ['', '', '', '', '', '', '', '', ''];
   gameActive = true;
@@ -116,7 +116,7 @@ function resetGame() {
     cell.textContent = ''; 
   });
 }
-
+//reset game para resetear el juego
 
 cells.forEach(cell => {
   cell.addEventListener('click', handleCellClick);
